@@ -28,7 +28,8 @@ admin.post('/login', async (req, res) => {
         if(hash(password) === user.password) {
             // 才让登录
             req.session.username = user.username;
-            res.send('登录成功');
+            // res.send('登录成功');
+            res.redirect('/admin/user'); // 默认 302
         } else {
             res.status(400).render('admin/error', {
                 msg: '密码错误'
