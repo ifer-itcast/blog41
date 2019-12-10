@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 
 require('./model/connect');
+require('./model/user');
 
 // 静态资源访问
 app.use(express.static(path.join(__dirname, 'public')));

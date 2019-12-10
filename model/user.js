@@ -31,6 +31,14 @@ const userSchema = new mongoose.Schema({
 // 集合
 const User = mongoose.model('User', userSchema);
 
+/* User.create({
+    username: 'ifer',
+    email: 'ifer@qq.com',
+    password: 'ifer',
+    role: 'admin',
+    state: 0
+}).then(res =>console.log(res)); */
+
 module.exports = {
     User
 };
