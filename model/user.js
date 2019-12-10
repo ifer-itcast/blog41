@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const hash = require('../utils/hash');
 
 // 规则
 const userSchema = new mongoose.Schema({
@@ -34,7 +35,7 @@ const User = mongoose.model('User', userSchema);
 /* User.create({
     username: 'ifer',
     email: 'ifer@qq.com',
-    password: 'ifer',
+    password: hash('ifer'),
     role: 'admin',
     state: 0
 }).then(res =>console.log(res)); */

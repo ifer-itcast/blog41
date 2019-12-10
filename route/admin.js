@@ -1,6 +1,7 @@
 const express = require('express');
 const {User} = require('../model/user');
 const admin = express.Router();
+const hash = require('../utils/hash');
 
 admin.get('/login', (req, res) => {
     res.render('admin/login', {});
@@ -21,7 +22,8 @@ admin.post('/login', async (req, res) => {
 
     if(user) {
         // 证明邮箱存在
-        if(password == user.password) {
+        // hash('ifer') === '22823e3b4f3376d3507865315ead9a3349c9369419084582e69f2130de813183'
+        if(hash(password) === user.password) {
             // 才让登录
             res.send('登录成功');
         } else {
