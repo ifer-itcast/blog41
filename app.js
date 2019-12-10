@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const bodyParser = require('body-parser');
 
 require('./model/connect');
-require('./model/user');
+// require('./model/user');
+app.use(bodyParser.urlencoded({extended: false}));
 
 // 静态资源访问
 app.use(express.static(path.join(__dirname, 'public')));
