@@ -8,7 +8,9 @@ admin.get('/login', (req, res) => {
 });
 
 admin.get('/user', (req, res) => {
-    res.render('admin/user', {});
+    res.render('admin/user', {
+        username: req.session.username
+    });
 });
 
 admin.post('/login', async (req, res) => {
@@ -25,6 +27,7 @@ admin.post('/login', async (req, res) => {
         // hash('ifer') === '22823e3b4f3376d3507865315ead9a3349c9369419084582e69f2130de813183'
         if(hash(password) === user.password) {
             // 才让登录
+            req.session.username = user.username;
             res.send('登录成功');
         } else {
             res.status(400).render('admin/error', {
