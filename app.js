@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+require('./model/connect');
+
 // 静态资源访问
 app.use(express.static(path.join(__dirname, 'public')));
 // 模板配置
