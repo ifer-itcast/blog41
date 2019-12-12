@@ -26,13 +26,7 @@ const admin = require('./route/admin');
 const home = require('./route/home');
 
 // 登录拦截
-app.use('/admin', (req, res, next) => {
-    if(req.url !== '/login' && !req.session.username) {
-        res.redirect('/admin/login');
-    } else {
-        next();
-    }
-});
+app.use('/admin', require('./middleware/loginGuard'));
 
 // 后台管理相关的路由
 app.use('/admin', admin);
