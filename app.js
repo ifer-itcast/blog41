@@ -33,4 +33,10 @@ app.use('/admin', admin);
 // 前台展示相关的路由
 app.use('/home', home);
 
+// 统一错误信息的处理
+app.use((err, req, res, next) => {
+    const {path, message} = JSON.parse(err);
+    res.redirect(`${path}?message=${message}`);
+});
+
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));
