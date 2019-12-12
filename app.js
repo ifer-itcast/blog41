@@ -7,7 +7,13 @@ const session = require('express-session');
 require('./model/connect');
 // require('./model/user');
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(session({secret: 'test key'}));
+app.use(session({
+    secret: 'test key',
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 24 * 60 * 60 * 1000
+    }
+}));
 
 // 静态资源访问
 app.use(express.static(path.join(__dirname, 'public')));

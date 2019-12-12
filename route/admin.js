@@ -43,4 +43,11 @@ admin.post('/login', async (req, res) => {
     }
 });
 
+admin.get('/logout', (req, res) => {
+    req.session.destroy(function() {
+        res.clearCookie('connect.sid');
+        res.redirect('/admin/login');
+    });
+});
+
 module.exports = admin;
