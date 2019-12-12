@@ -1,4 +1,6 @@
 const Joi = require('joi');
+const {User} = require('../../model/user');
+const hash = require('../../utils/hash');
 
 module.exports = async (req, res) => {
     let schema = {
@@ -10,10 +12,18 @@ module.exports = async (req, res) => {
     };
 
     try {
-        let result = await Joi.validate(req.body, schema);
-        console.log(result);
-        res.send('ok')
+        await Joi.validate(req.body, schema);
     } catch(err) {
-        res.redirect(`/admin/user-edit?message=${err.message}`);
+        return res.redirect(`/admin/user-edit?message=${err.message}`);
     }
+
+    const user = await User.findOne({email: req.body.email});
+    if(user) {
+        // 说明之前已经有此邮箱
+        return res.redirect(`/admin/user-edit?message=此用户已经存在`);
+    }
+    // 允许添加
+    req.body.password = hash(req.body.password);
+    await User.create(req.body);
+    res.redirect('/admin/user');
 };
