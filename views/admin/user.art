@@ -56,7 +56,7 @@
                 </li>
                 {{/if}}
                 <% for(let i = 1; i <= total; i ++) { %>
-                <li><a href="/admin/user?page={{i}}">{{i}}</a></li>
+                <li><a class="{{page == i ? 'active' : ''}}" href="/admin/user?page={{i}}">{{i}}</a></li>
                 <% } %>
                 <li style="display: {{page >= total ? 'none' : 'inline'}}">
                     <a href="/admin/user?page={{page -0 +1}}">

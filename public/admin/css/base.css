@@ -362,3 +362,7 @@ h4 {
 	transform: translate(-50%);
 	width: 70%;
 }
+
+.pagination>li>a.active{
+	background-color: #eee;
+}
