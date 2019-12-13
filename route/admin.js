@@ -14,4 +14,8 @@ admin.post('/user-modify', require('./admin/user-modify-fn'));
 
 admin.get('/delete', require('./admin/user-delete-fn'));
 
+// 文章路由
+admin.get('/article', require('./admin/articlePage'));
+admin.get('/article-edit', require('./admin/article-edit'));
+
 module.exports = admin;

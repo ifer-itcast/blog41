@@ -1,6 +1,7 @@
 const {User} = require('../../model/user');
 
 module.exports = async (req, res) => {
+    req.app.locals.currentLink = 'user';
     // 当前页码
     let page = req.query.page || 1;
     // 每一页显示多少条数据
