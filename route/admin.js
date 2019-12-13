@@ -12,4 +12,6 @@ admin.post('/user-edit', require('./admin/user-edit-fn'));
 
 admin.post('/user-modify', require('./admin/user-modify-fn'));
 
+admin.get('/delete', require('./admin/user-delete-fn'));
+
 module.exports = admin;
