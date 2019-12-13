@@ -34,9 +34,9 @@
                 
                 <div class="form-group">
                    <label for="exampleInputFile">文章封面</label>
-                   <input name="cover" type="file">
+                   <input name="cover" type="file" id="inputFile">
                    <div class="thumbnail-waper">
-                       <img class="img-thumbnail" src="">
+                       <img class="img-thumbnail" src="" id="prevImg">
                    </div>
                 </div>
                 <div class="form-group">
@@ -69,5 +69,19 @@
 
         // 获取数据
         // const editorData = editor.getData();
+
+        let oInputFile = document.querySelector('#inputFile');
+        let oPrevImg = document.querySelector('#prevImg');
+        oInputFile.onchange = function() {
+            // console.log(this.files[0]);
+            // 创建 reader 对象
+            let reader = new FileReader();
+            // 读取文件为 Base64 类型的编码
+            reader.readAsDataURL(this.files[0]);
+            // 读取完成后拿到结果给图片的地址
+            reader.onload = function() {
+                oPrevImg.src = this.result;
+            };
+        };
     </script>
 {{/block}}
