@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
             message,
             user,
             buttonTxt: '修改',
-            link: '/admin/user-modify'
+            link: '/admin/user-modify?id='+id // 修改用户时传过去id用于查询信息
         });
     } else {
         res.render('admin/user-edit', {

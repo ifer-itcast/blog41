@@ -35,8 +35,17 @@ app.use('/home', home);
 
 // 统一错误信息的处理
 app.use((err, req, res, next) => {
-    const {path, message} = JSON.parse(err);
-    res.redirect(`${path}?message=${message}`);
+    // {path: '/admin/user-modify',message: '错误提示', id: 'fdsfdsfd'}
+    let obj = JSON.parse(err);
+    let arr = [];
+    for(let attr in obj) {
+        if(attr != 'path') {
+            arr.push(`${attr}=${obj[attr]}`);
+        }
+    }
+    // [message='错误提示', id: 'fdsfds']
+    // message=错误提示&id=fdsfds
+    res.redirect(`${obj.path}?${arr.join('&')}`);
 });
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));

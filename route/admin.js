@@ -10,4 +10,6 @@ admin.get('/logout', require('./admin/logout'));
 admin.get('/user-edit', require('./admin/user-edit'));
 admin.post('/user-edit', require('./admin/user-edit-fn'));
 
+admin.post('/user-modify', require('./admin/user-modify-fn'));
+
 module.exports = admin;
