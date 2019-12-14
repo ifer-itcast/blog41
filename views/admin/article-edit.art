@@ -16,8 +16,6 @@
                 <h4>5b9a716cb2d2bf17706bcc0a</h4>
             </div>
             <!-- /分类标题 -->
-            // enctype: x-www-form-urlencoded => name=ifer&age=18
-            // enctype: multipart/form-data
             <form class="form-container" action="/admin/article-edit" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>标题</label>
