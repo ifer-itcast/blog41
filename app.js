@@ -3,6 +3,11 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const dateFormat = require('dateformat');
+const template = require('art-template');
+
+// 配置格式化日期，在每一个模板文件中都能使用
+template.defaults.imports.dateFormat = dateFormat;
 
 require('./model/connect');
 // require('./model/user');

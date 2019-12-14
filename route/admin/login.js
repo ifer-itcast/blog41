@@ -16,7 +16,8 @@ module.exports = async (req, res) => {
         if(hash(password) === user.password) {
             // 才让登录
             req.session.username = user.username;
-            console.log(user._id, 244);
+            // 这里要小心，req.session 下默认会有一个叫 id 的属性
+            // 所以这里挂载用户 id 的时候要换一个名字，防止和自带的 sessionID 冲突
             req.session.userid = user._id;
             // res.send('登录成功');
             res.redirect('/admin/user'); // 默认 302
