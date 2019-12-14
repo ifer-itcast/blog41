@@ -2,8 +2,7 @@ const express = require('express');
 
 const admin = express.Router();
 
-admin.get('/', (req, res) => {
-    res.send('欢迎访问前台展示页面');
-});
+admin.get('/', require('./home/index'));
+admin.get('/article', require('./home/article'));
 
 module.exports = admin;
