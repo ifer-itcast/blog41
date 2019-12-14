@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const dateFormat = require('dateformat');
 const template = require('art-template');
+const morgan = require('morgan');
 
 // 配置格式化日期，在每一个模板文件中都能使用
 template.defaults.imports.dateFormat = dateFormat;
@@ -29,6 +30,13 @@ app.engine('art', require('express-art-template'));
 
 const admin = require('./route/admin');
 const home = require('./route/home');
+
+if(process.env.NODE_ENV === 'development') {
+    // 做开发环境的事情
+    app.use(morgan('dev'));
+} else {
+    // 做生产环境的事情
+}
 
 // 登录拦截
 app.use('/admin', require('./middleware/loginGuard'));
