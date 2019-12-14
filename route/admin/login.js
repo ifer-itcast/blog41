@@ -16,7 +16,8 @@ module.exports = async (req, res) => {
         if(hash(password) === user.password) {
             // 才让登录
             req.session.username = user.username;
-            req.session.id = user._id;
+            console.log(user._id, 244);
+            req.session.userid = user._id;
             // res.send('登录成功');
             res.redirect('/admin/user'); // 默认 302
         } else {

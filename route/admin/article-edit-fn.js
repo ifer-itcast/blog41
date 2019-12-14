@@ -1,5 +1,6 @@
 const formidable = require('formidable');
 const path = require('path');
+const {Article} = require('../../model/article');
 module.exports = (req, res) => {
     // 1. 初始化 form 表单对象
     let form = new formidable.IncomingForm();
@@ -8,7 +9,16 @@ module.exports = (req, res) => {
     // 3. 保持文件的后缀
     form.keepExtensions = true;
     // 4. 解析上传数据
-    form.parse(req, function(err, fields, files) {
-        res.send(files);
+    form.parse(req, async function(err, fields, files) {
+        // 获取普通数据
+        let {title, author, publishDate, content} = fields;
+        await Article.create({
+            title,
+            author,
+            publishDate,
+            cover: files.cover.path.split('public')[1], // 解析图片地址
+            content
+        });
+        res.redirect('/admin/article');
     });
 };
