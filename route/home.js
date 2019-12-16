@@ -1,11 +1,12 @@
 const express = require('express');
+const home = express.Router();
 
-const admin = express.Router();
+// 首页
+home.get('/', require('./home/index'));
+// 详情页
+home.get('/article', require('./home/article'));
 
-admin.get('/', require('./home/index'));
-admin.get('/article', require('./home/article'));
+// 评论功能
+home.post('/comment', require('./home/comment'));
 
-// 评论
-admin.post('/comment', require('./home/comment'));
-
-module.exports = admin;
+module.exports = home;

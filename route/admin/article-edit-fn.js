@@ -10,7 +10,7 @@ module.exports = (req, res) => {
     form.keepExtensions = true;
     // 4. 解析上传数据
     form.parse(req, async function(err, fields, files) {
-        // 获取普通数据
+        // 普通数据在 fields 里面，文件（图片，压缩包等）在 files 里面
         let {title, author, publishDate, content} = fields;
         await Article.create({
             title,

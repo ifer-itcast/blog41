@@ -3,13 +3,13 @@ const hash = require('../../utils/hash');
 
 module.exports = async (req, res) => {
     const {email, password} = req.body;
+
     if(email.trim().length === 0 || password.trim().length === 0) {
-        res.status(400).render('admin/error', {
+        return res.status(400).render('admin/error', {
             msg: '用户名或密码不能为空'
         });
     }
     const user = await User.findOne({email});
-    console.log(233);
     if(user) {
         // 证明邮箱存在
         // hash('ifer') === '22823e3b4f3376d3507865315ead9a3349c9369419084582e69f2130de813183'

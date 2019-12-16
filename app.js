@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-const session = require('express-session');
 const dateFormat = require('dateformat');
 const template = require('art-template');
 const morgan = require('morgan');
@@ -23,7 +22,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'art');
 app.engine('art', require('express-art-template'));
 
+// 后台相关的路由
 const admin = require('./route/admin');
+// 前台相关的路由
 const home = require('./route/home');
 
 if(process.env.NODE_ENV === 'development') {
