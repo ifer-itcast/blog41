@@ -16,7 +16,7 @@
 					<h3 class="article-title">{{article.title}}</h3>
 					<div class="article-info">
 						<span class="author">{{article.author.username}}</span>
-						<span>{{dateFormat(article.publishDate, 'yyyy-mm-dd')}}</span>
+						<span>{{dateFormat(article.publishDate, 'yyyy-mm-dd HH:MM:ss')}}</span>
 					</div>
 				</div>
 				<div class="article-content">
@@ -39,7 +39,7 @@
 						<div class="mb10">
 							<div class="article-info">
 								<span class="author">{{$value.uid.username}}</span>
-								<span>{{dateFormat($value.time, 'yyyy-mm-dd')}}</span>
+								<span>{{dateFormat($value.time, 'yyyy-mm-dd HH:MM:ss')}}</span>
 								<span>{{$value.uid.email}}</span>
 							</div>
 							<div class="comment-content">
@@ -50,7 +50,7 @@
 					</div>
 				</div>
 				{{else}}
-				<h3>请登录<a href="/admin/login">登录</a></h3>
+				<h3>你还没有登录，请<a href="/admin/login">登录</a>~</h3>
 				{{/if}}
 			</div>
 		</div>

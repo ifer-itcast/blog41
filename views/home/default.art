@@ -19,7 +19,7 @@
 				<a class="article-title" href="article.html">{{$value.title}}</a>
 				<div class="article-info">
 					<span class="author">{{$value.author.username}}</span>
-					<span>{{dateFormat($value.publishDate, 'yyyy-mm-dd')}}</span>
+					<span>{{dateFormat($value.publishDate, 'yyyy-mm-dd HH:MM:ss')}}</span>
 				</div>
 				<div class="brief">
 					{{@$value.content.replace(/<[^>]+>/g, '').substring(0, 70) + '...'}}

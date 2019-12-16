@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
         });
     }
     const user = await User.findOne({email});
-
+    console.log(233);
     if(user) {
         // 证明邮箱存在
         // hash('ifer') === '22823e3b4f3376d3507865315ead9a3349c9369419084582e69f2130de813183'

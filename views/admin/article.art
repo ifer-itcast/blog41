@@ -33,7 +33,7 @@
                     <tr>
                         <td>{{@$value._id}}</td>
                         <td>{{$value.title}}</td>
-                        <td>{{dateFormat($value.publishDate, 'yyyy-mm-dd')}}</td>
+                        <td>{{dateFormat($value.publishDate, 'yyyy-mm-dd HH:MM:ss')}}</td>
                         <td>{{$value.author.username}}</td>
                         <td>
                             <a href="article-edit.html" class="glyphicon glyphicon-edit"></a>

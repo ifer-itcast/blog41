@@ -13,13 +13,8 @@ template.defaults.imports.dateFormat = dateFormat;
 require('./model/connect');
 // require('./model/user');
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(session({
-    secret: 'test key',
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 24 * 60 * 60 * 1000
-    }
-}));
+// session 处理
+app.use(require('./middleware/sessionHandle')());
 
 // 静态资源访问
 app.use(express.static(path.join(__dirname, 'public')));
@@ -43,6 +38,7 @@ app.use('/admin', require('./middleware/loginGuard'));
 
 // 后台管理相关的路由
 app.use('/admin', admin);
+app.get('/', (req, res) => res.redirect('/home'));
 // 前台展示相关的路由
 app.use('/home', home);
 
@@ -61,4 +57,4 @@ app.use((err, req, res, next) => {
     res.redirect(`${obj.path}?${arr.join('&')}`);
 });
 
-app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+app.listen(3000, () => console.log('~~~~~~~~~~~~~~~~~~~http://localhost:3000~~~~~~~~~~~~~~~~~~'));
