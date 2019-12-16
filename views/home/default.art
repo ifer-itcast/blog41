@@ -10,9 +10,9 @@
 	<!-- 头部框架结束 -->
 	<!-- 文章列表开始 -->
 	<ul class="list w1100">
-		{{each aritcles.records}}
+		{{each article.records}}
 		<li class="{{!($index % 2) ? 'fl' : 'fr'}}">
-			<a href="article.html" class="thumbnail">
+			<a href="/home/article?id={{@$value._id}}" class="thumbnail">
 				<img src="{{$value.cover}}">
 			</a>
 			<div class="content">
@@ -32,12 +32,16 @@
 
 	<!-- 分页开始 -->
 	<div class="page w1100">
-		<a href="#">上一页</a>
-		<a href="#" class="active">1</a>
-		<a href="#">2</a>
-		<a href="#">3</a>
-		<a href="#">4</a>
-		<a href="#">5</a>
-		<a href="#">下一页</a>
+		{{if article.page > 1}}
+		<a href="/home/?page={{article.page - 1}}">上一页</a>
+		{{/if}}
+
+		{{each article.display}}
+		<a href="/home/?page={{$value}}" class="{{$value == article.page ? 'active' : ''}}">{{$value}}</a>
+		{{/each}}
+		
+		{{if article.page < article.pages}}
+		<a href="/home/?page={{article.page - 0 + 1}}">下一页</a>
+		{{/if}}
 	</div>
 {{/block}}
