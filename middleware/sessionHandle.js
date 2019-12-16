@@ -1,5 +1,6 @@
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const config = require('config');
 
 module.exports = () => session({
     secret: '2019-11-15',
@@ -9,7 +10,7 @@ module.exports = () => session({
         maxAge: 24 * 60 * 60 * 1000 // 前端 cookie 一天后过期
     },
     store: new MongoStore({
-        url: 'mongodb://ifer:ifer@localhost/blog41',
+        url: `mongodb://${config.get('db.user')}:${config.get('db.pwd')}@${config.get('db.host')}:${config.get('db.port')}/${config.get('db.name')}`,
         autoRemoveInterval: 5 // 每 5 分钟去数据库中删除过期的 session，根据文档中的 session 字段下的 cookie 过期时间去删除
     })
 });

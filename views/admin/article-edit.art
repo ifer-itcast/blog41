@@ -12,7 +12,7 @@
         <!-- 侧边栏 -->
         <div class="main">
             <!-- 分类标题 -->
-            <div class="title">
+            <div class="title" style="display: none;">
                 <h4>5b9a716cb2d2bf17706bcc0a</h4>
             </div>
             <!-- /分类标题 -->
