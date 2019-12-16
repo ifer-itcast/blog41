@@ -19,8 +19,13 @@ module.exports = async (req, res) => {
             // 这里要小心，req.session 下默认会有一个叫 id 的属性
             // 所以这里挂载用户 id 的时候要换一个名字，防止和自带的 sessionID 冲突
             req.session.userid = user._id;
+            req.session.role = user.role;
             // res.send('登录成功');
-            res.redirect('/admin/user'); // 默认 302
+            if(user.role === 'normal') {
+                res.redirect('/home'); // 默认 302
+            } else {
+                res.redirect('/admin/user'); // 默认 302
+            }
         } else {
             res.status(400).render('admin/error', {
                 msg: '密码错误'

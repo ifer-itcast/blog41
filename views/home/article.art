@@ -22,6 +22,7 @@
 				<div class="article-content">
 					{{@article.content}}
 				</div>
+				{{if username}}
 				<div class="article-comment">
 					<h4>评论</h4>
 					
@@ -44,6 +45,9 @@
 						</div>
 					</div>
 				</div>
+				{{else}}
+				<h3>请登录<a href="/admin/login">登录</a></h3>
+				{{/if}}
 			</div>
 		</div>
 	</div>
