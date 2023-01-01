@@ -20,7 +20,7 @@
   "dependencies": {
     "art-template": "^4.13.2",
     "body-parser": "^1.19.0",
-    "config": "^3.2.4",
+    "config": "^3.3.8",
     "connect-mongo": "^3.2.0",
     "dateformat": "^3.0.3",
     "express": "^4.17.1",
